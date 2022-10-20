@@ -26,7 +26,7 @@
     justify-content: center;
     transition: 1s;
     backface-visibility: hidden;
-    border-radius: 20px;
+    
 }
 .front{
     background-color: red;
