@@ -14,7 +14,6 @@ body {
 
 	font-family: raleway_f, sans-serif;
 	line-height: 1.55;
-  color: black;
   box-sizing: border-box;
 }
 
@@ -29,6 +28,7 @@ code {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  border: none;
 }
 
 .pagination{

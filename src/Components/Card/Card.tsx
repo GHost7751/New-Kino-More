@@ -11,13 +11,13 @@ const Card = (props: MovieProps): JSX.Element => {
         Poster
     } = props;
     return (
-        <div className='card' key={imdbID}>
+        <div  key={imdbID}>
             <div className='content'>
-                <div className='front'>
+                <div className='front' >
                     {
                         Poster ? (
-                            <figure>
-                                <img src={Poster} alt="" width={300} height={300} border-radius={'30px'} />
+                            <figure >
+                                <img src={Poster} alt=""  className='cardImg' />
                                 <figcaption>
                                     {Title}
                                 </figcaption>
@@ -37,9 +37,9 @@ const Card = (props: MovieProps): JSX.Element => {
                             <li> <strong>Type :</strong><em>{Type}</em></li>
                         </ul>
                     </div>
-                    <div className='cardButton'>
+                    {/* <div className='cardButton'>
                         <button>More info</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
@@ -47,3 +47,5 @@ const Card = (props: MovieProps): JSX.Element => {
 };
 
 export default Card;
+
+// width={290} height={290}

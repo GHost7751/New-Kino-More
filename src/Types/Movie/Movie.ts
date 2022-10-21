@@ -3,7 +3,7 @@ export default interface MovieProps {
     Year:string,
     imdbID:string,
     Type:string,
-    Poster:string
+    Poster:string|undefined,
 }
 
 export default interface APIPlotFull {
@@ -16,6 +16,6 @@ export default interface APIPlotFull {
     Actors:string,
     Plot:string,
     Country:string,
-    Poster:string,
+    Poster:string|undefined,
     Writer:string
 }
