@@ -5,11 +5,12 @@
     position: relative;
     perspective: 1000px;
     margin: 30px;
-    border-radius: 30px;
+    margin-right: 15px;
 }
 .cardText{
     top: 50%;
     left: 50%;
+    right: 50%;
     margin: 80px;
 }
 .cardButton{

@@ -4,41 +4,48 @@ import Search from '../../Components/Search/Search';
 import Spinner from '../../Components/Spinner/Spinner';
 import { fetchMovie } from '../../Service/FetchMovie/FetchMovie';
 import MovieProps from '../../Types/Movie/Movie';
-import './MoviePage.css'
+import './MoviePage.css';
+import Pagination from '@mui/material/Pagination';
 
-const MoviePage = () => {
-    const [data,setData] = useState<MovieProps[]>([]);
-    const [loading,setLoading] = useState<boolean>(false);
+const MoviePage = (): JSX.Element => {
+    const [data, setData] = useState<MovieProps[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [page, setPage] = useState<number>(1)
 
-    const movie = async () :Promise<void> => {
+    const movie = async (): Promise<void> => {
         setLoading(true)
-        setData( await fetchMovie())
+        setData(await fetchMovie(page))
     }
+
 
     useEffect(() => {
         movie()
-    },[])
+    }, [page])
 
 
-
-    console.log(data)
     return (
         <div className='pageMovie'>
             <Search />
-<br />
-<br />
-<br />
+            <br />
+            <br />
+            <br />
             <div className='movies'>
-                
+
                 {data.length ? (data
-                    .map((movie) => <Card key={movie.id} {...movie} />)
+                    .map((movie) => <Card key={movie.imdbID} {...movie} />)
 
                 ) : (
                     <Spinner />
                 )
-                   
+
                 }
-             </div>
+            </div>
+            <Pagination className='pagination' shape="rounded" color='primary' size='large' sx={{ backgroundColor: '#103BE5' }}
+                count={10}
+                page={page}
+                onChange={(_, num) => setPage(num)}
+            />
+
         </div>
     );
 };

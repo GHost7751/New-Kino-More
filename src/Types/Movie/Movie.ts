@@ -1,11 +1,21 @@
 export default interface MovieProps {
-    id:string,
-    rank:string,
-    title:string,
-    year:string,
-    fullTitle:string,
-    image:string,
-    crew:string,
-    imDbRating:string,
-    imDbRatingCount:string
+    Title:string,
+    Year:string,
+    imdbID:string,
+    Type:string,
+    Poster:string
+}
+
+export default interface APIPlotFull {
+    Title:string,
+    Year:string,
+    Released:string,
+    Runtime:string,
+    Genre:string,
+    Director:string,
+    Actors:string,
+    Plot:string,
+    Country:string,
+    Poster:string,
+    Writer:string
 }

@@ -30,6 +30,15 @@ code {
   grid-column-gap: 15px;
   grid-row-gap: 15px;
 }
+
+.pagination{
+display: flex;
+justify-content: center;
+margin-top: 15px;
+color: white;
+}
+  
+
 @media (min-width: 575.98px){
   .container {
     max-width: 540px;
