@@ -10,22 +10,23 @@ import Pagination from '@mui/material/Pagination';
 const MoviePage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    const [page, setPage] = useState<number>(1)
+    const [page, setPage] = useState<number>(1);
+    const [search,setSearch] = useState<string>('marvel');
 
     const movie = async (): Promise<void> => {
         setLoading(true)
-        setData(await fetchMovie(page))
+        setData(await fetchMovie(page,search))
     }
 
 
     useEffect(() => {
         movie()
-    }, [page])
+    }, [page,search])
 
 
     return (
         <div className='pageMovie'>
-            <Search />
+            <Search setSearch={setSearch}/>
             <br />
             <br />
             <br />
