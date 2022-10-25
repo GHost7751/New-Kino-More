@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import './Search.css'
 
 interface ISearchProps {
-    setSearch: (str: string) => void
+    setSearch: (str: string) => void;
 }
 
 

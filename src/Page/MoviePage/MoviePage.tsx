@@ -41,7 +41,7 @@ const MoviePage = (): JSX.Element => {
 
                 }
             </div>
-            <Pagination className='pagination' shape="rounded" color='primary' size='large' sx={{ backgroundColor: '#103BE5' }}
+            <Pagination className='pagination' shape="rounded" color='primary' size='large' 
                 count={10}
                 page={page}
                 onChange={(_, num) => setPage(num)}
