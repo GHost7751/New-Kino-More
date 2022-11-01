@@ -2,31 +2,31 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../Components/Card/Card';
 import Search from '../../Components/Search/Search';
 import Spinner from '../../Components/Spinner/Spinner';
-import { fetchMovie } from '../../Service/FetchMovie/FetchMovie';
-import MovieProps from '../../Types/Movie/Movie';
-import './MoviePage.css';
+import { fetchSeries } from '../../Service/FetchSeries/FetchSeries';
+import MovieProps from '../../Types/Series/Series';
+import './SeriesPage.css';
 import Pagination from '@mui/material/Pagination';
 
-const MoviePage = (): JSX.Element => {
+const SeriesPage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
     const [search,setSearch] = useState<string>('marvel');
 
 
-    const movie = async (): Promise<void> => {
+    const series = async (): Promise<void> => {
         setLoading(!loading)
-        setData(await fetchMovie(page,search))
+        setData(await fetchSeries(page,search))
     }
 
     useEffect(() => {
-        movie()
+        series()
     }, [page,search])
 
 
     return (
         <>
-        <div className='pageMovie'>
+        <div className='pageSeries'>
             <Search setSearch={setSearch}/>
             <br />
             <br />
@@ -54,4 +54,4 @@ const MoviePage = (): JSX.Element => {
     );
 };
 
-export default MoviePage;
+export default SeriesPage;

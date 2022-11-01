@@ -18,20 +18,20 @@ const HomePage = ():JSX.Element => {
 							<span className='btn_line button_line--left'></span>
 							Movie
 						</a></Link>
-						<a href="#" className='btn'>
+						<Link to='/SeriesPage'><a href="/SeriesPage" className='btn'>
 							<span className='btn_line button_line--top'></span>
 							<span className='btn_line button_line--right'></span>
 							<span className='btn_line button_line--bottom'></span>
 							<span className='btn_line button_line--left'></span>
 							Series
-						</a>
-						<a href="#" className='btn'>
+						</a></Link>
+						<Link to='/GamesPage'><a href="/GamesPage" className='btn'>
 							<span className='btn_line button_line--top'></span>
 							<span className='btn_line button_line--right'></span>
 							<span className='btn_line button_line--bottom'></span>
 							<span className='btn_line button_line--left'></span>
 							Games
-						</a>
+						</a></Link>
 						</div>
         </div>
         </div>

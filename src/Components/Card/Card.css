@@ -85,6 +85,7 @@
     position: relative;
     transition: .5s;
     overflow: hidden;
+    cursor: pointer;
    }
    .butt::before,
    .butt::after {

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../Components/Card/Card';
 import Search from '../../Components/Search/Search';
 import Spinner from '../../Components/Spinner/Spinner';
-import { fetchMovie } from '../../Service/FetchMovie/FetchMovie';
 import MovieProps from '../../Types/Movie/Movie';
-import './MoviePage.css';
+import './GamesPage.css';
 import Pagination from '@mui/material/Pagination';
+import { fetchGames } from '../../Service/FetchGames/FetchGames';
 
-const MoviePage = (): JSX.Element => {
+const GamesPage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
@@ -16,7 +16,7 @@ const MoviePage = (): JSX.Element => {
 
     const movie = async (): Promise<void> => {
         setLoading(!loading)
-        setData(await fetchMovie(page,search))
+        setData(await fetchGames(page,search))
     }
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const MoviePage = (): JSX.Element => {
 
     return (
         <>
-        <div className='pageMovie'>
+        <div className='pageGames'>
             <Search setSearch={setSearch}/>
             <br />
             <br />
@@ -34,7 +34,7 @@ const MoviePage = (): JSX.Element => {
             <div className='movies'>
 
                 {data.length ? (data
-                    .map((movie) => <Card key={movie.imdbID} {...movie} />)
+                    .map((games) => <Card key={games.imdbID} {...games} />)
 
                 ) : (
                     <Spinner />
@@ -54,4 +54,4 @@ const MoviePage = (): JSX.Element => {
     );
 };
 
-export default MoviePage;
+export default GamesPage;

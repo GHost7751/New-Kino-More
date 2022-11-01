@@ -54,7 +54,7 @@ const Card = (props: MovieProps): JSX.Element => {
                             </ul>
                         </div>
                         <div className="dws">
-                            <button className="butt" onClick={() => (setModalShow(true), plotFull())}>More Info</button>
+                            <a className="butt" onClick={() => (setModalShow(true), plotFull())}>More Info</a>
                         </div>
                     </div>
                 </div>

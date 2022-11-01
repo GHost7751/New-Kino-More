@@ -30,7 +30,7 @@ const MoreInfo:FC<ModalProps> = (props) => {
         
             <Modal
                 {...props}
-                size="lg"
+                size="sm"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
@@ -40,7 +40,7 @@ const MoreInfo:FC<ModalProps> = (props) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <Card style={{ width: '100%', height: '50%' }} key={imdbID}>
+                <Card  key={imdbID}>
                     {Poster === 'N/A' ? (
                         <img
                             src={`https://via.placeholder.com/300x400?text=${Title}`}
