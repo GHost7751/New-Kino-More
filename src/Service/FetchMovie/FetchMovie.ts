@@ -9,11 +9,15 @@ const fetchMovie = (page:number, search:string): Promise<any> => {
     return data
 }
 
+const fetchMoviePlotFull = (id: string | undefined) => {
+    const data = fetch(`${Adress}${API_KEY}&i=${id}&plot=full`)
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((err) => {
+            throw new Error(err);
+            
+        })
+    return data
+   }
 
-export {fetchMovie}
-
-// // https://imdb-api.com/en/API/Top250TVs/k_bxbz5g6m
-// const API_KEY:string = 'k_bxbz5g6m';
-// const Adress:string = 'https://imdb-api.com/en/API/';
-
-// ${Adress}${API_KEY}&s=${search}&type=movie&page=${page}
+export {fetchMovie,fetchMoviePlotFull}

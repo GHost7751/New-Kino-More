@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Card from '../../Components/Card/Card';
 import Search from '../../Components/Search/Search';
 import Spinner from '../../Components/Spinner/Spinner';
-import { fetchMovie } from '../../Service/FetchMovie/FetchMovie';
+import { fetchMovie, fetchMoviePlotFull } from '../../Service/FetchMovie/FetchMovie';
 import MovieProps from '../../Types/Movie/Movie';
 import './MoviePage.css';
 import Pagination from '@mui/material/Pagination';
+import MoreInfo from '../../Components/Modal/Modal';
 
 const MoviePage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
@@ -13,11 +14,11 @@ const MoviePage = (): JSX.Element => {
     const [page, setPage] = useState<number>(1);
     const [search,setSearch] = useState<string>('marvel');
 
+
     const movie = async (): Promise<void> => {
         setLoading(true)
         setData(await fetchMovie(page,search))
     }
-
 
     useEffect(() => {
         movie()
@@ -25,6 +26,7 @@ const MoviePage = (): JSX.Element => {
 
 
     return (
+        <>
         <div className='pageMovie'>
             <Search setSearch={setSearch}/>
             <br />
@@ -41,13 +43,15 @@ const MoviePage = (): JSX.Element => {
 
                 }
             </div>
+
             <Pagination className='pagination' shape="rounded" color='primary' size='large' 
-                count={10}
+                count={12}
                 page={page}
                 onChange={(_, num) => setPage(num)}
             />
-
         </div>
+        
+        </>
     );
 };
 
