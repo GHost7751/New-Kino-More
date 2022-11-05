@@ -4,6 +4,7 @@ import MovieProps from '../../Types/Movie/Movie';
 import MoreInfo from '../Modal/Modal';
 import './Card.css'
 
+
 const Card = (props: MovieProps): JSX.Element => {
     
     const [modalShow, setModalShow] = useState<boolean>(false);
@@ -31,18 +32,19 @@ const Card = (props: MovieProps): JSX.Element => {
                 <div className='content'>
                     <div className='front' >
                         {
-                            Poster ? (
-                                <figure >
+                            Poster === 'N/A' ? (
+                                <img className='cardImg'
+                                    src={`https://via.placeholder.com/370x400?text=${Title}`}
+                                />
+                                
+
+                            ) :
+                            <figure >
                                     <img src={Poster} alt="" className='cardImg' />
                                     <figcaption className='cardTitle'>
                                         {Title}
                                     </figcaption>
                                 </figure>
-
-                            ) :
-                                <img
-                                    src={`https://via.placeholder.com/300x400?text=${Title}`}
-                                />
                         }
                     </div>
                     <div className='back'>

@@ -6,6 +6,7 @@ import { fetchSeries } from '../../Service/FetchSeries/FetchSeries';
 import MovieProps from '../../Types/Series/Series';
 import './SeriesPage.css';
 import Pagination from '@mui/material/Pagination';
+import { Link } from 'react-router-dom';
 
 const SeriesPage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
@@ -29,6 +30,13 @@ const SeriesPage = (): JSX.Element => {
         <div className='pageSeries'>
             <Search setSearch={setSearch}/>
             <br />
+            <Link to='/'><a href="/" className='btnOne'>
+							<span className='btn_line button_line--top'></span>
+							<span className='btn_line button_line--right'></span>
+							<span className='btn_line button_line--bottom'></span>
+							<span className='btn_line button_line--left'></span>
+							Home
+						</a></Link>
             <br />
             <br />
             <div className='movies'>

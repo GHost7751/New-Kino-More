@@ -3,8 +3,8 @@
     perspective: 1000px;
 }
 .content{
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 275px;
     position: relative;
     perspective: 1000px;
     margin: 30px;
@@ -41,9 +41,10 @@
 
 }
 .cardImg{
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 20px;
+    
 }
 
 .back{
@@ -61,7 +62,10 @@
 }
 
 .cardTitle{
-    font-family: Oxygen;
+    font-family: 'Roboto', sans-serif;
+    
+    font-size: 12px;
+    text-align: center;
 }
 
 .dws {
