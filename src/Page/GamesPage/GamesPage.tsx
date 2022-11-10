@@ -28,7 +28,7 @@ const GamesPage = (): JSX.Element => {
     return (
         <>
         <div className='pageGames'>
-            <Search setSearch={setSearch}/>
+            <Search />
             <br />
             <Link to='/'><a href="/" className='btnOne'>
 							<span className='btn_line button_line--top'></span>

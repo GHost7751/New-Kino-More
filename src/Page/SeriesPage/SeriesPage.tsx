@@ -28,7 +28,7 @@ const SeriesPage = (): JSX.Element => {
     return (
         <>
         <div className='pageSeries'>
-            <Search setSearch={setSearch}/>
+            <Search />
             <br />
             <Link to='/'><a href="/" className='btnOne'>
 							<span className='btn_line button_line--top'></span>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../../Components/Card/Card';
 import Search from '../../Components/Search/Search';
 import Spinner from '../../Components/Spinner/Spinner';
@@ -7,28 +7,31 @@ import MovieProps from '../../Types/Movie/Movie';
 import './MoviePage.css';
 import Pagination from '@mui/material/Pagination';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addPage } from '../../Features/Pagination/pagination-slice';
 
 const MoviePage = (): JSX.Element => {
     const [data, setData] = useState<MovieProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    const [page, setPage] = useState<number>(1);
-    const [search,setSearch] = useState<string>('marvel');
-
+    const page = useAppSelector( state => state.pagination)
+    const title = useAppSelector(state => state.search)
+    
+    const dispatch = useAppDispatch()
 
     const movie = async (): Promise<void> => {
         setLoading(!loading)
-        setData(await fetchMovie(page,search))
+        setData(await fetchMovie(page,title))
     }
 
     useEffect(() => {
         movie()
-    }, [page,search])
+    }, [page,title])
 
 
     return (
         <>
         <div className='pageMovie'>
-            <Search setSearch={setSearch}/>
+            <Search />
             <br />
             <Link to='/'><a href="/" className='btnOne'>
 							<span className='btn_line button_line--top'></span>
@@ -52,9 +55,9 @@ const MoviePage = (): JSX.Element => {
             </div>
 
             <Pagination className='pagination' shape="rounded" color='primary' size='large' 
-                count={12}
+                count={10}
                 page={page}
-                onChange={(_, num) => setPage(num)}
+                onChange={(_, num) => dispatch(addPage(num))}
             />
         </div>
         

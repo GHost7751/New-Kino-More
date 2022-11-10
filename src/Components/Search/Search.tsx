@@ -1,20 +1,20 @@
-import React, { FC, useState } from 'react';
-import './Search.css'
+import { useState } from 'react';
 
-interface ISearchProps {
-    setSearch: (str: string) => void;
-}
+import './Search.css';
+
+import {addSearch} from '../../Features/Search/search-slice'
+import { useAppDispatch } from '../../hooks';
 
 
-const Search: FC<ISearchProps> = (props) => {
-    const {
-        setSearch = Function.prototype
-    } = props;
 
-    const [str, setStr] = useState<string>('');
+
+const Search = () : JSX.Element => {
+    const [str , setStr] = useState<string>('')
+    const dispatch = useAppDispatch();
+
     const handleKey = (event: { key: string; }) => {
         if (event.key === 'Enter') {
-            setSearch(str);
+            dispatch(addSearch(str))
         }
     };
 
@@ -26,7 +26,7 @@ const Search: FC<ISearchProps> = (props) => {
                     setStr(e.target.value)}
                     onKeyDown={handleKey} />
             <button className='search-btn' onClick={() =>
-                setSearch(str)
+                dispatch(addSearch(str))
             }
                 onKeyDown={handleKey}>
                 <i className='fas fa-search'></i>
