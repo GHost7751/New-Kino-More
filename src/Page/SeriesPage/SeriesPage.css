@@ -1,9 +1,10 @@
-.pageSeries{
+.pageMovie{
     background-image: url('../../Assets/felix-mooneeram-evlkOfkQ5rE-unsplash (1).jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color : white;
     font-size: small;
+	padding-top: 15px;
 
       
 }

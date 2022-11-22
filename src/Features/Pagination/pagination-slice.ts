@@ -1,7 +1,9 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice, createAction } from '@reduxjs/toolkit';
 
 
-const initialState :number = 1;
+const initialState : number = 1;
+
+export const resetToDefault = createAction('root/reset-pagination')
 
 export const paginationSlice = createSlice({
     name : 'Pagination',
@@ -10,9 +12,18 @@ export const paginationSlice = createSlice({
         addPage(state,action : PayloadAction<number>){
             state = action.payload
             return state
+        },
+        getPage(state){
+            return state
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(resetToDefault, () => {
+                return initialState;
+            })
     }
 });
 
-export const {addPage} = paginationSlice.actions;
+export const {addPage,getPage} = paginationSlice.actions;
 export const paginationReducer = paginationSlice.reducer

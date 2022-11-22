@@ -1,70 +1,65 @@
-import React, { useState } from 'react';
-import { fetchMoviePlotFull } from '../../Service/FetchMovie/FetchMovie';
-import MovieProps from '../../Types/Movie/Movie';
-import MoreInfo from '../Modal/Modal';
+import MoreInfo from '../../Features/Modal/Modal';
+import { getShow } from '../../Features/Modal/modal-slice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import Spinner from '../Spinner/Spinner';
 import './Card.css'
 
 
-const Card = (props: MovieProps): JSX.Element => {
+const Card = (): JSX.Element => {
     
-    const [modalShow, setModalShow] = useState<boolean>(false);
-    const [data,setData] = useState<any>({})
-    const [loading,setLoading] = useState<boolean>(false)
-    const {
-        Title,
-        Year,
-        imdbID,
-        Type,
-        Poster
-    } = props;
+    const fetchBase = useAppSelector(state => state.fetch)
 
-
-    const plotFull =  async () : Promise<void> => {
-        setLoading(!loading)  
-        setData( await fetchMoviePlotFull(imdbID))
-    }
-
+    const dispatch = useAppDispatch()
 
     
     return (
         <>
-            <div key={imdbID} className='movieCard'>
-                <div className='content'>
-                    <div className='front' >
-                        {
-                            Poster === 'N/A' ? (
-                                <img className='cardImg'
-                                    src={`https://via.placeholder.com/370x400?text=${Title}`}
-                                />
-                                
+         <div className='movies'>
+         {fetchBase.list.length ? (fetchBase.list
+                    .map((movie) => 
+                    <div key={movie.imdbID} className='movieCard'>
+                    <div className='content'>
+                        <div className='front' >
+                            {
+                                movie.Poster === 'N/A' ? (
+                                    <img className='cardImg'
+                                        src={`https://via.placeholder.com/370x400?text=${movie.Title}`}
+                                    />
+                                    
+    
+                                ) :
+                                <figure >
+                                        <img src={movie.Poster} alt="" className='cardImg' />
+                                        <figcaption className='cardTitle'>
+                                            {movie.Title}
+                                        </figcaption>
+                                    </figure>
+                            }
+                        </div>
+                        <div className='back'>
+                            <div className='cardText'>
+                                <ul>
+                                    <li><strong>Title :</strong><em>{movie.Title}</em></li>
+                                    <li> <strong>Year :</strong><em>{movie.Year}</em></li>
+                                    <li> <strong>Type :</strong><em>{movie.Type}</em></li>
+                                </ul>
+                            </div>
+                            <div className="dws">
+                                <i  className="butt" onClick={() => {
+                                    dispatch(getShow(movie.imdbID))
+                                }}>More Info</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>)
 
-                            ) :
-                            <figure >
-                                    <img src={Poster} alt="" className='cardImg' />
-                                    <figcaption className='cardTitle'>
-                                        {Title}
-                                    </figcaption>
-                                </figure>
-                        }
-                    </div>
-                    <div className='back'>
-                        <div className='cardText'>
-                            <ul>
-                                <li><strong>Title :</strong><em>{Title}</em></li>
-                                <li> <strong>Year :</strong><em>{Year}</em></li>
-                                <li> <strong>Type :</strong><em>{Type}</em></li>
-                            </ul>
-                        </div>
-                        <div className="dws">
-                            <a className="butt" onClick={() => (setModalShow(true), plotFull())}>More Info</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    <MoreInfo
-                        data={data}
-                        show={modalShow}
-                        onHide={() => setModalShow(false)} />
+                ) : (
+                    <Spinner />
+                )
+
+                }</div>
+          
+                    <MoreInfo />
         </>
     );
 };
