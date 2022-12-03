@@ -1,15 +1,21 @@
-
+.movieCard {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
 .content{
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 275px;
     position: relative;
     perspective: 1000px;
     margin: 30px;
-    border-radius: 30px;
+    margin-right: 15px;
+    transition: 0.2s;
+    transform-origin: left center;
 }
 .cardText{
     top: 50%;
     left: 50%;
+    right: 50%;
     margin: 80px;
 }
 .cardButton{
@@ -26,16 +32,27 @@
     justify-content: center;
     transition: 1s;
     backface-visibility: hidden;
-    border-radius: 20px;
+    border-radius : 15px;
+    
 }
 .front{
     background-color: red;
+    border-radius: 30px;
 
+}
+.cardImg{
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+    
 }
 
 .back{
     background-color:#8d8d8d;
     transform: rotateY(180deg);
+    background-image: url('../../Assets/felix-mooneeram-evlkOfkQ5rE-unsplash (1).jpg');
+    background-size: cover;
+    border-radius: 20px;
 }
 .content:hover .front{
     transform: rotateY(180deg);
@@ -43,3 +60,59 @@
 .content:hover .back{
     transform: rotateY(360deg);
 }
+
+.cardTitle{
+    font-family: 'Roboto', sans-serif;
+    
+    font-size: 12px;
+    text-align: center;
+}
+
+.dws {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   }
+   .butt {
+    border: 3px solid #218294;
+    font-size: 15px;
+    color: #218294;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 150px;
+    height: 40px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    transition: .5s;
+    overflow: hidden;
+    cursor: pointer;
+   }
+   .butt::before,
+   .butt::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #218294;
+    top: 0;
+    left: -100%;
+    opacity: .5;
+    transition: .3s;
+    z-index: -1;
+   }
+   .butt::after {
+    opacity: 1;
+    transition-delay: .2s;
+   }
+   .butt:hover {
+    color: #fff;
+   }
+   .butt:hover::before,
+   .butt:hover::after {
+    left: 0;
+   }
+   

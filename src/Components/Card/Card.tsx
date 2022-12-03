@@ -1,42 +1,66 @@
-import React from 'react';
-import MovieProps from '../../Types/Movie/Movie';
+import MoreInfo from '../../Features/Modal/Modal';
+import { getShow } from '../../Features/Modal/modal-slice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import Spinner from '../Spinner/Spinner';
 import './Card.css'
 
-const Card = (props:MovieProps):JSX.Element => {
-    const { 
-        id,
-        rank,
-        title,
-        year,
-        fullTitle,
-        image,
-        crew,
-        imDbRating,
-        imDbRatingCount
-    } = props;
-    return (
-        <div className='card' key={id}>
-            <div className='content'>
-                <div className='front'>
-                    <figure>
-                    <img src={image} alt="" width={300} height={300} border-radius={'30px'}/>
 
-                    </figure>
+const Card = (): JSX.Element => {
+    
+    const fetchBase = useAppSelector(state => state.fetch)
+
+    const dispatch = useAppDispatch()
+
+    
+    return (
+        <>
+         <div className='movies'>
+         {fetchBase.list.length ? (fetchBase.list
+                    .map((movie) => 
+                    <div key={movie.imdbID} className='movieCard'>
+                    <div className='content'>
+                        <div className='front' >
+                            {
+                                movie.Poster === 'N/A' ? (
+                                    <img className='cardImg'
+                                        src={`https://via.placeholder.com/370x400?text=${movie.Title}`}
+                                    />
+                                    
+    
+                                ) :
+                                <figure >
+                                        <img src={movie.Poster} alt="" className='cardImg' />
+                                        <figcaption className='cardTitle'>
+                                            {movie.Title}
+                                        </figcaption>
+                                    </figure>
+                            }
+                        </div>
+                        <div className='back'>
+                            <div className='cardText'>
+                                <ul>
+                                    <li><strong>Title :</strong><em>{movie.Title}</em></li>
+                                    <li> <strong>Year :</strong><em>{movie.Year}</em></li>
+                                    <li> <strong>Type :</strong><em>{movie.Type}</em></li>
+                                </ul>
+                            </div>
+                            <div className="dws">
+                                <i  className="butt" onClick={() => {
+                                    dispatch(getShow(movie.imdbID))
+                                }}>More Info</i>
+                            </div>
+                        </div>
                     </div>
-                <div className='back'>
-                    <div className='cardText'>
-                        <ul>
-                            <li><strong>Title :</strong><em>{title}</em></li>
-                            <li> <strong>Year :</strong><em>{year}</em></li>
-                            <li> <strong>Type :</strong><em>{imDbRating}</em></li>
-                        </ul>
-                    </div>
-                    <div className='cardButton'>
-                        <button>More info</button>
-                    </div>
-                    </div>
-            </div>
-        </div>
+                </div>)
+
+                ) : (
+                    <Spinner />
+                )
+
+                }</div>
+          
+                    <MoreInfo />
+        </>
     );
 };
 

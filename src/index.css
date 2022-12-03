@@ -14,7 +14,6 @@ body {
 
 	font-family: raleway_f, sans-serif;
 	line-height: 1.55;
-  color: black;
   box-sizing: border-box;
 }
 
@@ -26,10 +25,22 @@ code {
 
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  border: none;
+  margin-left:50px;
+  margin-right:100px;
 }
+
+.pagination{
+display: flex;
+justify-content: center;
+margin-top: 15px;
+background-color: rgb(108, 29, 11);
+}
+  
+
 @media (min-width: 575.98px){
   .container {
     max-width: 540px;

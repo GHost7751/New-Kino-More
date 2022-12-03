@@ -1,5 +1,5 @@
 import Card from '../../Components/Card/Card';
-import './MoviePage.css';
+import './SeriesPage.css';
 import Search from '../../Features/Search/Search';
 import PagePagionationPage from '../../Features/Pagination/usePagination';
 import { HomeButton } from '../../Components/Button/homeButton';
@@ -7,7 +7,7 @@ import { HomeButton } from '../../Components/Button/homeButton';
 
 
 
-const MoviePage = (): JSX.Element => {
+const SeriesPage = (): JSX.Element => {
     return (
         <>
         <div className='pageMovie'>
@@ -21,4 +21,4 @@ const MoviePage = (): JSX.Element => {
     );
 };
 
-export default MoviePage;
+export default SeriesPage;
